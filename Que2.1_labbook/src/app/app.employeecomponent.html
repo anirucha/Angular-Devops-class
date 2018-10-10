@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+<!-- <input [value]='empId' (input)='empId=$event.target.value' /> -->
+<!-- Is Equal to Event binding() & property binding -->
+<table>
+<tr>
+<td>ID</td>
+<td><input [(ngModel)]='Id' type='number' /></td>
+</tr>
+<tr>
+<td>Name</td>
+<td><input [(ngModel)]='Name' type='text'/></td>
+</tr>
+<tr>
+<td>Salary</td>
+<td><input [(ngModel)]='Salary' type='number'/></td>
+</tr>
+<tr>
+<td>Department</td>
+<td><input [(ngModel)]='Department' type='text'/></td>
+</tr>
+</table>
+
+<div>
+Employee Id is {{Id}} Name is {{Name}} & Salary is {{Salary}} & Department is {{Department}}.
+</div>
+<button (click)="showAlert(Id,Name,Salary,Department)">Show Alert Box</button><br><br>
+<button (click)="addEmployee(Id,Name,Salary,Department)">Add current employee</button><br><br>
+<input type="button" value="clear" name="clear"/>
+<!-- <button (click)="showAll()">Show All employees</button> -->
+
+<br><br><hr><hr>
+<table border="2">
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Salary</th>
+		<th>Department</th>
+		<th colspan="2">Action</th>
+	</tr>
+	<tr *ngFor="let entry of EmpArray;let i = index">
+		<td>{{entry.empId}}</td>
+		<td>{{entry.empName}}</td>
+		<td>{{entry.empSalary}}</td>
+		<td>{{entry.empDepartment}}</td>
+		<td><button (click)="doUpdate(i)">Update</button></td>
+		<td><button (click)="doDelete(i)">Delete</button></td>
+	</tr>
+</table>
+<br><br><hr><hr>
+<h2>Update Details</h2>
+<table border="1">
+	<tr>
+		<td>Id</td>
+		<td><input [(ngModel)]='uId' type='number' readonly/></td>
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td><input [(ngModel)]='uName' type='text' /></td>
+	</tr>
+	<tr>
+		<td>Salary</td>
+		<td><input [(ngModel)]='uSalary' type='number' /></td>
+	</tr>
+	<tr>
+		<td>Department</td>
+		<td><input [(ngModel)]='uDepartment' type='text' /></td>
+	</tr>
+	
+
+</table> 
+<br><br>
+<button (click)="updateEmployee(uId,uName,uSalary,uDepartment)">Update Employee</button><br><br>
+
+
+
+</body>
+</html>
